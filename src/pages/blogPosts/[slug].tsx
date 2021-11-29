@@ -40,7 +40,6 @@ export async function getStaticProps({ params }) {
 
 function BlogPost({ blogPost }) {
   const { title, thumbnail, shortDescription, body, category, author } = blogPost.fields;
-  console.log(blogPost);
   return (
     <div
       className="container"
