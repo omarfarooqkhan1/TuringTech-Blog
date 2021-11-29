@@ -47,7 +47,7 @@ You are all set! When the deployment run completes, you will see the app at the 
 
 - [Next.js 9.x][nextjs]
 - [TypeScript 3.x][typescript]
-- [Tailwind CSS][tailwind]
+- [Ant Design]
 
 ## Project structure
 
@@ -60,15 +60,10 @@ src/
   │   ├ types/
   │   ├ api.ts
   │   └ ... etc
-  │
   ├ pages/
-  │    ├ [locale]/
-  │    │   ├ articles/
-  │    │   │    └ [slug].tsx
-  │    │   │
+  │    ├ blogPosts/
   │    │   ├ [slug].tsx
-  │    │   └ index.ts
-  │    │
+  │    │   └ index.tsx
   │    ├ ...
   │    └ index.tsx
   │
