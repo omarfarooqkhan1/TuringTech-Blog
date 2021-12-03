@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Row } from 'antd';
+import { Typography, Row, List } from 'antd';
 const { Title } = Typography;
 
 import { createClient } from 'contentful';
@@ -18,6 +18,7 @@ export async function getStaticProps() {
   return {
     props: {
       blogPosts: response.items,
+      revalidate: 1,
     },
   };
 }
@@ -36,9 +37,14 @@ function BlogPosts({ blogPosts }) {
         <Title level={2}>Latest Blog Posts</Title>
       </Row>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-        {blogPosts.map((blogPost) => (
-          <PostCard key={blogPost.sys.id} blogPost={blogPost} />
-        ))}
+        <List
+          dataSource={blogPosts}
+          renderItem={(blogPost) => (
+            <List.Item>
+              <PostCard key={blogPost.sys.id} blogPost={blogPost} />
+            </List.Item>
+          )}
+        />
       </div>
     </div>
   );
