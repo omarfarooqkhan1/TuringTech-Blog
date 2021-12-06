@@ -1,9 +1,23 @@
 import React from 'react';
 import { Typography, Row, List } from 'antd';
 const { Title } = Typography;
-
 import { createClient } from 'contentful';
 import PostCard from '../components/PostCard';
+import styled from 'styled-components';
+
+const Heading = styled(Row)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 95%;
+`;
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 export async function getStaticProps() {
   const client = createClient({
@@ -25,18 +39,11 @@ export async function getStaticProps() {
 
 function BlogPosts({ blogPosts }) {
   return (
-    <div>
-      <Row
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'white',
-          width: '95%',
-        }}>
+    <>
+      <Heading>
         <Title level={2}>Latest Blog Posts</Title>
-      </Row>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+      </Heading>
+      <Section>
         <List
           dataSource={blogPosts}
           renderItem={(blogPost) => (
@@ -45,8 +52,8 @@ function BlogPosts({ blogPosts }) {
             </List.Item>
           )}
         />
-      </div>
-    </div>
+      </Section>
+    </>
   );
 }
 

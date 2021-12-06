@@ -1,47 +1,41 @@
 import React from 'react';
-import { Image, Row, Col, Button, Input } from 'antd';
+import { Image, Row, Col, Input } from 'antd';
 import { SendOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
+import Button from 'components/Button';
+
+const StyledRow = styled(Row)`
+  display: flex;
+  align-self: center;
+  align-items: space-around;
+  background-styledcolor: white;
+  width: 95%;
+`;
+
+const StyledCol = styled(Col)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2;
+`;
 
 function AppHeader() {
   return (
-    <Row
-      style={{
-        display: 'flex',
-        alignSelf: 'center',
-        alignItems: 'space-around',
-        backgroundColor: 'white',
-        width: '95%',
-      }}>
-      <Col span={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <StyledRow>
+      <StyledCol span={6}>
         <Image width={200} src="/images/logo.png" preview={false} style={{ alignSelf: 'center' }} />
-      </Col>
-      <Col
-        span={6}
-        offset={5}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 2 }}>
+      </StyledCol>
+      <StyledCol span={6} offset={5}>
         <Input
           size="large"
           addonAfter={<SendOutlined style={{ color: '#01696E' }} />}
           placeholder="Subscribe to our Blog!"
         />
-      </Col>
-      <Col
-        span={6}
-        offset={1}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 2 }}>
-        <Button
-          size="large"
-          style={{
-            color: '#01696E',
-            borderColor: '#01696E',
-            borderWidth: 2,
-            fontWeight: 'bold',
-            borderRadius: 5,
-          }}>
-          Get Started
-        </Button>
-      </Col>
-    </Row>
+      </StyledCol>
+      <StyledCol span={6} offset={1}>
+        <Button>Get Started</Button>
+      </StyledCol>
+    </StyledRow>
   );
 }
 
