@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Button = styled.button<{ primary: boolean }>`
   /* Adapt the colors based on primary prop */
   background: ${(props) => (props.primary ? '#01696E' : 'white')};
   color: ${(props) => (props.primary ? 'white' : '#01696E')};

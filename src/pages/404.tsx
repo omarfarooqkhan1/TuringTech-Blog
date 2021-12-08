@@ -11,7 +11,7 @@ function NotFound() {
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={
-        <Button primary onClick={() => router.push('/')}>
+        <Button primary={true} onClick={() => router.push('/')}>
           Back Home
         </Button>
       }

@@ -46,7 +46,7 @@ export async function getStaticPaths() {
     content_type: 'blogPost',
   });
 
-  const paths = response.items.map((item) => {
+  const paths = response.items.map((item: any) => {
     return {
       params: { slug: item.fields.slug },
     };
@@ -64,10 +64,10 @@ export async function getStaticProps({ params }) {
     'fields.slug': params.slug,
   });
 
-  if (!items.length) {
+  if (items.length === 0) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/404',
         permanent: false,
       },
     };
@@ -76,8 +76,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       blogPost: items[0],
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 }
 

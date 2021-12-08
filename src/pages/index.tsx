@@ -32,8 +32,8 @@ export async function getStaticProps() {
   return {
     props: {
       blogPosts: response.items,
-      revalidate: 1,
     },
+    revalidate: 1,
   };
 }
 
@@ -46,7 +46,7 @@ function BlogPosts({ blogPosts }) {
       <Section>
         <List
           dataSource={blogPosts}
-          renderItem={(blogPost) => (
+          renderItem={(blogPost: any) => (
             <List.Item>
               <PostCard key={blogPost.sys.id} blogPost={blogPost} />
             </List.Item>

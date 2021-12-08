@@ -3,6 +3,7 @@ import { Image, Row, Col, Input } from 'antd';
 import { SendOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import Button from 'components/Button';
+import Link from 'next/link';
 
 const StyledRow = styled(Row)`
   display: flex;
@@ -23,7 +24,16 @@ function AppHeader() {
   return (
     <StyledRow>
       <StyledCol span={6}>
-        <Image width={200} src="/images/logo.png" preview={false} style={{ alignSelf: 'center' }} />
+        <Link href="/">
+          <a>
+            <Image
+              width={200}
+              src="/images/logo.png"
+              preview={false}
+              style={{ alignSelf: 'center' }}
+            />
+          </a>
+        </Link>
       </StyledCol>
       <StyledCol span={6} offset={5}>
         <Input
@@ -33,7 +43,7 @@ function AppHeader() {
         />
       </StyledCol>
       <StyledCol span={6} offset={1}>
-        <Button>Get Started</Button>
+        <Button primary={false}>Get Started</Button>
       </StyledCol>
     </StyledRow>
   );
