@@ -4,6 +4,7 @@ import { SendOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import Button from 'components/Button';
 import Link from 'next/link';
+import router from 'next/router';
 
 const StyledRow = styled(Row)`
   display: flex;
@@ -21,6 +22,27 @@ const StyledCol = styled(Col)`
 `;
 
 function AppHeader() {
+
+  const [userState, setUserState] = React.useState('Login');
+  
+  React.useEffect(() => {
+    const username = JSON.parse(localStorage.getItem("username"));
+    if(username){
+      setUserState('Logout');
+    }
+  });
+
+  const loginHandler = () => {
+    if(userState === 'Logout'){
+      setUserState('Login');
+      localStorage.removeItem("username");
+      router.push('/');
+    }
+    else {
+      router.push('/login');
+    }
+  };
+
   return (
     <StyledRow>
       <StyledCol span={6}>
@@ -43,7 +65,9 @@ function AppHeader() {
         />
       </StyledCol>
       <StyledCol span={6} offset={1}>
-        <Button primary={false}>Get Started</Button>
+          <a>
+            <Button primary={false} onClick={loginHandler}>{userState}</Button>
+          </a>
       </StyledCol>
     </StyledRow>
   );
